@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import {
   createBrowserRouter,
@@ -66,4 +65,6 @@ export default App
 //TIME LOG:
 
 // 07.07.2023
-// start 11:45 -   
+// start 11:45 - end 13:00 = 75
+// start 13:15 - end 14:30 = 65
+// start 15:00 - 
