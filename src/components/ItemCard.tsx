@@ -11,6 +11,9 @@ const ProductCart = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: solid 1px #C0C0C0;
+    border-radius: 15px;
+    margin: 0 15px;
 `;
 
 const ProductDescription = styled.div`
@@ -22,7 +25,7 @@ const ProductDescription = styled.div`
 interface IProductCart extends Omit<IProduct, 'id'> {}
 
 const ItemCard:FC<IProductCart> = ({ title, price, image}) => (
-    <ProductCart >
+    <ProductCart>
       <Image src={image} alt={title} />
       <ProductDescription>
           <h3>{title}</h3>

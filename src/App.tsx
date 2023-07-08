@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <Products/>,
   },
   {
-    path: "product/:productId",
+    path: "/product/:productId",
     element: <ProductInfo/>,
   },
   {
@@ -67,4 +67,7 @@ export default App
 // 07.07.2023
 // start 11:45 - end 13:00 = 75
 // start 13:15 - end 14:30 = 65
-// start 15:00 - 
+// start 15:00 - end 17:15 = 135
+
+// 08.07.2023
+// start 14:30 - end 

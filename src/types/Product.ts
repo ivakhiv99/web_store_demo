@@ -4,3 +4,8 @@ export interface IProduct {
   price: number;
   image: string;
 };
+
+export interface IDetailedProduct extends IProduct {
+    category: string;
+    description: string;
+}
