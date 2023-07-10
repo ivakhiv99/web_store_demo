@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetch } from '../hooks'
 import { IProduct } from '../../types/Product';
 import ItemCard from '../ItemCard';
+
 import { styled } from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -32,6 +33,7 @@ const Products = () => {
                     to={`/product/${product.id}`}
                 >
                     <ItemCard
+                        id={product.id}
                         title={product.title}
                         price={product.price}
                         image={product.image}

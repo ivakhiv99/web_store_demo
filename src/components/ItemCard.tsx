@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { IProduct } from '../types/Product';
 import { styled } from 'styled-components';
 import Image from './Image';
+import AddToCartButton from './AddToCartButton';
 
 const ProductCart = styled.div`
     width: 350px;
@@ -22,14 +23,15 @@ const ProductDescription = styled.div`
 
 
 
-interface IProductCart extends Omit<IProduct, 'id'> {}
+// interface IProductCart extends Omit<IProduct, 'id'> {}
 
-const ItemCard:FC<IProductCart> = ({ title, price, image}) => (
+const ItemCard:FC<IProduct> = ({ id, title, price, image}) => (
     <ProductCart>
       <Image src={image} alt={title} />
       <ProductDescription>
           <h3>{title}</h3>
           <p>{price}</p>
+          <AddToCartButton productId={id}/>
       </ProductDescription>
     </ProductCart>
 );

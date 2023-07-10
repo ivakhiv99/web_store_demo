@@ -5,6 +5,7 @@ import Image from '../Image';
 import { IDetailedProduct } from '../../types/Product';
 import { styled } from 'styled-components';
 import BackButton from '../BackButton';
+import AddToCartButton from '../AddToCartButton';
 
 const Wrapper = styled.div`
     display: flex;
@@ -51,6 +52,7 @@ const ProductInfo = () => {
                             <Price>{productData.price}</Price> 
 
                             <p>{productData.description}</p>
+                            <AddToCartButton productId={productData.id}/>
                         </DescriptionWrapper>
                     </FlexRow>
                 </>

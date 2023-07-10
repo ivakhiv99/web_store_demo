@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { styled } from 'styled-components';
 
@@ -6,7 +7,11 @@ const Button = styled.button`
     
 `
 
-const BackButton = () => {
+interface IBackButton {
+    label?: string;
+}
+
+const BackButton:FC<IBackButton> = ({label}) => {
     const navigate = useNavigate ();
 
     const handleClick = () => {
@@ -15,7 +20,7 @@ const BackButton = () => {
 
     return (
         <Button onClick={handleClick}>
-            {'< back to results'}
+            {label || '< back to results'}
         </Button>
     );
 }
