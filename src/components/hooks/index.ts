@@ -1,3 +1,3 @@
 import useFetch from './useFetch'
-
-export {useFetch};
+import useFetchMultiple from './useFetchMultiple';
+export { useFetch, useFetchMultiple };

@@ -32,7 +32,7 @@ const ProductInfo = () => {
     const [productData, setProductData] = useState<IDetailedProduct | null>(null);
     
     const { productId } = useParams();
-    const {data, isLoading, error} = useFetch(`/products/${productId}`);
+    const { data, isLoading, error } = useFetch(`/products/${productId}`);
     
     useEffect(()=> {
         if(data) {

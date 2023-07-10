@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface IProduct extends Record<string, unknown> {
   id: number;
   title: string;
   price: number;

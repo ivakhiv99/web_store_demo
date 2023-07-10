@@ -71,5 +71,7 @@ export default App
 
 // 10.07.2023 
 // start 11:30 - end 13:00 = 90
-// start
+// start 13:45 - end 14:00 = 15
+// start 14:30 - end 15:15 = 45
+// start 16:30 - end 17:15 = 45
 
