@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { styled } from 'styled-components';
 import { useAppDispatch } from '../redux/store';
-import { addProductToCart } from '../redux/cartReducer';
+import { addProductToCart } from '../redux/cartSlice';
 
 const Button = styled.button`
     width: 180px;

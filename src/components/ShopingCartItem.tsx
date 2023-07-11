@@ -3,6 +3,7 @@ import { IProduct } from '../types/Product';
 import { styled } from 'styled-components';
 import Image from './Image';
 import AddToCartButton from './AddToCartButton';
+import ItemCounter from './ItemCounter';
 
 const ProductCart = styled.div`
     width: 100%;
@@ -50,17 +51,7 @@ const ShopingCartItem:FC<IProduct> = ({ id, title, price, image}) => (
           <p>{price}</p>
           <AddToCartButton productId={id}/>
       </ProductDescription>
-      <ControlButtons>
-        <ControlButton>
-        +
-        </ControlButton>
-        <Count>
-            3
-        </Count>
-        <ControlButton>
-        -
-        </ControlButton>
-      </ControlButtons>
+      <ItemCounter/>
     </ProductCart>
 );
 

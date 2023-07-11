@@ -1,13 +1,26 @@
-import { useFetch, useFetchMultiple } from '../hooks'
-import { useEffect, useState } from "react";
-import { useAppSelector } from '../../redux/store';
+import { useFetchMultiple } from '../hooks'
+import { useEffect, useState , useMemo} from "react";
+import { clearCart } from '../../redux/cartSlice'; 
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { IProduct } from '../../types/Product';
 import ShopingCartItem from '../ShopingCartItem';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+const BuyButton = styled.button`
+    background-color: #63ffc7;
+`;
+
+const ClearCart = styled.button`
+    background-color: #63ffc7;
+`;
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState<IProduct[]>([]);
+
+    const dispatch = useAppDispatch();
     const cartDataFromStore = useAppSelector(state => state.cart);
-    const urls = cartDataFromStore.map((productId) => `/products/${productId}`);
+    const urls = useMemo(() => cartDataFromStore.map((productId) => `/products/${productId}`), [cartDataFromStore]);
     const {responses, isLoading, error } = useFetchMultiple(urls);
     
     useEffect(() => {
@@ -16,20 +29,28 @@ const Cart = () => {
         }
     }, [responses]);
 
-    useEffect(() => {
-        console.log({cartItems});
-    }, [cartItems]);
+    const handleClearCart = () => dispatch(clearCart());
 
     return (
         <div>
+            <ClearCart onClick={handleClearCart}>
+                Clear cart
+            </ClearCart>
             {cartItems.map((product) => (
                 <ShopingCartItem
+                    key={product.id}
                     id={product.id}
                     title={product.title}
                     price={product.price}
                     image={product.image}
                 />
             ))}
+            <Link to='/checkout'>
+                <BuyButton>
+                    Buy now!
+                </BuyButton>
+            </Link>
+
         </div>
 
     );

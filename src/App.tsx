@@ -1,10 +1,11 @@
 import './App.css'
 import { Products, ProductInfo, Cart, Checkout } from './components/pages';
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { styled } from 'styled-components';
 import Header from './components/Header';
-import store from './redux/store';
-import { Provider } from 'react-redux';
+import { useEffect } from 'react';
+import { syncCart } from './redux/cartSlice';
+import { useAppDispatch } from './redux/store';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -12,24 +13,28 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const storedCartData = localStorage.getItem('cart');
+    const userCart = storedCartData ? JSON.parse(storedCartData) : [];
+    dispatch(syncCart(userCart))
+  }, []);
+
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <AppWrapper>
-          <Header />
-          <Routes>
-            <Route
-              path="/"
-              element={<Navigate to="/products" />}
-            />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:productId" element={<ProductInfo />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-          </Routes>
-        </AppWrapper>
-      </BrowserRouter>
-    </Provider>
+    <AppWrapper>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate to="/products" />}
+        />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:productId" element={<ProductInfo />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+      </Routes>
+    </AppWrapper>
   );
 };
 
@@ -52,6 +57,7 @@ export default App
 // - collect and display checkout info
 
 // Other:
+// Make routes into enums
 
 //TIME LOG:
 
