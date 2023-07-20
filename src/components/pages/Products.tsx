@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const ProductCards = styled.div`
     width: 100%;
     display: flex;
-
 `;
 
 

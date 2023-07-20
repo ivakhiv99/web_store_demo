@@ -23,8 +23,6 @@ const ProductDescription = styled.div`
 
 
 
-// interface IProductCart extends Omit<IProduct, 'id'> {}
-
 const ItemCard:FC<IProduct> = ({ id, title, price, image}) => (
     <ProductCart>
       <Image src={image} alt={title} />

@@ -1,14 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: number[] = [];
+interface ICartItem {
+    id: number;
+    quantity: number;
+};
+
+type CartState = ICartItem[];
+
+const initialState: CartState = [];
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: initialState,
     reducers: {
-        addProductToCart: (state, action: PayloadAction<number>) => [...state, action.payload],
-        removeProductFromCart:  (state, action: PayloadAction<number>) => state.filter(item => item !== action.payload),
+        addProductToCart: (state, action: PayloadAction<ICartItem>) => [...state, action.payload],
+        removeProductFromCart:  (state, action: PayloadAction<ICartItem>) => state.filter(item => item !== action.payload),
         clearCart: () => [],
         syncCart: (_, action) => action.payload,
     }

@@ -26,7 +26,7 @@ const AddToCartButton:FC<IAddToCartButton> = ({ productId }) => {
         //Ideally here should be POST request to backend to save what user added to his cart
         //I'll just save this info in local storage for demo purposes
         alert(`product with id ${productId} added`);
-        dispatch(addProductToCart(productId));
+        dispatch(addProductToCart({id: productId, quantity: 1}));
     }
 
     return (

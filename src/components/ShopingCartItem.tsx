@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { IProduct } from '../types/Product';
 import { styled } from 'styled-components';
 import Image from './Image';
@@ -41,18 +41,30 @@ const ControlButton = styled.button`
 
 const Count = styled.div``;
 
-// interface IProductCart extends Omit<IProduct, 'id'> {}
+interface IProductCart extends IProduct {
+    updateQuantity: (id: number, count: number) => void;
+}
 
-const ShopingCartItem:FC<IProduct> = ({ id, title, price, image}) => (
-    <ProductCart>
-      <Image src={image} alt={title} />
-      <ProductDescription>
-          <h3>{title}</h3>
-          <p>{price}</p>
-          <AddToCartButton productId={id}/>
-      </ProductDescription>
-      <ItemCounter/>
-    </ProductCart>
-);
+
+const ShopingCartItem:FC<IProductCart> = ({updateQuantity, id, title, price, image}) => {
+    const [count, setCount] = useState<number>(1);
+
+    useEffect(()=>updateQuantity(id, count), [count]);
+    
+    const updateCount = (num: number) => setCount(num);
+
+    return (
+        <ProductCart>
+          <Image src={image} alt={title} />
+          <ProductDescription>
+              <h3>{title}</h3>
+              <p>{price*count}</p>
+              <AddToCartButton productId={id}/>
+          </ProductDescription>
+          <ItemCounter updateCount={updateCount}/>
+        </ProductCart>
+    );
+}
+
 
 export default ShopingCartItem;

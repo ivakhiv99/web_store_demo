@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const ItemCounter: React.FC = () => {
+interface IItemCounter {
+  updateCount: (num: number) => void
+}
+
+const ItemCounter: React.FC<IItemCounter> = ({updateCount}) => {
   const [itemsCount, setCount] = useState<number>(1);
 
   const increment = () => {
@@ -12,6 +16,8 @@ const ItemCounter: React.FC = () => {
         setCount(itemsCount - 1);
     }
   };
+
+  useEffect(() => updateCount(itemsCount), [itemsCount]);
 
   return (
     <div>

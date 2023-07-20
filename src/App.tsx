@@ -12,13 +12,20 @@ const AppWrapper = styled.div`
   width: 100%;
 `;
 
+export enum RouteNames {
+  products = '/products',
+  product = '/product',
+  cart = '/cart',
+  checkout = '/checkout',
+}
+
 function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const storedCartData = localStorage.getItem('cart');
     const userCart = storedCartData ? JSON.parse(storedCartData) : [];
-    dispatch(syncCart(userCart))
+    dispatch(syncCart(userCart));
   }, []);
 
   return (
@@ -27,18 +34,18 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Navigate to="/products" />}
+          element={<Navigate to={RouteNames.products} />}
         />
-        <Route path="/products" element={<Products />} />
-        <Route path="/product/:productId" element={<ProductInfo />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path={RouteNames.products} element={<Products />} />
+        <Route path={`${RouteNames.product}/:productId`} element={<ProductInfo />} />
+        <Route path={RouteNames.cart} element={<Cart />} />
+        <Route path={RouteNames.checkout} element={<Checkout />} />
       </Routes>
     </AppWrapper>
   );
 };
 
-export default App
+export default App;
 
 
 // TODO:
@@ -56,8 +63,6 @@ export default App
 // - calculate price
 // - collect and display checkout info
 
-// Other:
-// Make routes into enums
 
 //TIME LOG:
 
@@ -65,7 +70,6 @@ export default App
 // start 11:45 - end 13:00 = 75
 // start 13:15 - end 14:30 = 65
 // start 15:00 - end 17:15 = 135  = 275
-
 
 // 08.07.2023
 // start 14:30 - end 15:00 = 30
@@ -79,5 +83,7 @@ export default App
 // start 11:30 - end 13:00 = 90
 // start 13:45 - end 14:00 = 15
 // start 14:30 - end 15:15 = 45
-// start 16:30 - end 17:15 = 45
+// start 16:30 - end 17:15 = 45   = 195
 
+// 20.07.2023
+// start 11:30 - end 12:15 = 45
