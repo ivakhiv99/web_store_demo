@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
-import { localStorageMiddleware, rearrangeLocalStorageMiddleware } from './middlewares';
+import { localStorageMiddleware, condenseLocalStorageMiddleware } from './middlewares';
 
 
 
@@ -11,7 +11,7 @@ const store = configureStore({
     },
     middleware: [
         localStorageMiddleware,
-        rearrangeLocalStorageMiddleware,
+        condenseLocalStorageMiddleware,
     ],
 });
 
