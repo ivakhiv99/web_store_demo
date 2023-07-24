@@ -34,7 +34,8 @@ const Cart = () => {
 
     const dispatch = useAppDispatch();
     const cartDataFromStore = useAppSelector(state => state.cart);
-    const urls = useMemo(() => cartDataFromStore.map((productId) => `/products/${productId}`), [cartDataFromStore]);
+    const urls = useMemo(() => cartDataFromStore.map((product) => `/products/${product.id}`), [cartDataFromStore]);
+
     const { responses, isLoading, error } = useFetchMultiple(urls);
     
     useEffect(() => {

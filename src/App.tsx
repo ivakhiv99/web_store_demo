@@ -91,3 +91,7 @@ export default App;
 // 21.07.2023
 // start 10:45 - end 11:30 = 45
 // start 11:45 - end 12:30 = 45   = 90
+
+
+// 24.07.2023
+// start 15:15 - end 

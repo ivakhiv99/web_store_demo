@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 interface SingleResponse {
     responses: Record<string, unknown>[];
